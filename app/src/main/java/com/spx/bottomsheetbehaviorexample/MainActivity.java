@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final NestedScrollView bottomSheet = findViewById(R.id.bottom_sheet);
-        ViewGroup.LayoutParams layoutParams = bottomSheet.getLayoutParams();
+        final NestedScrollView nestedScrollView = findViewById(R.id.bottom_sheet);
+        ViewGroup.LayoutParams layoutParams = nestedScrollView.getLayoutParams();
         CoordinatorLayout.Behavior b = ((CoordinatorLayout.LayoutParams) layoutParams)
                 .getBehavior();
         behavior = (BottomSheetListBehavior) b;
