@@ -35,7 +35,7 @@ public class BottomSheetListBehavior extends BottomSheetBehavior {
 
     @Override
     public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dx, int dy, int[] consumed, int type) {
-        if (dy < 0 && !leaveEventToNestingChild(target)) {
+        if (dy < 0 && leaveEventToNestingChild(target)) {
             Log.d(TAG, "let child have event!");
             return;
         }
@@ -43,7 +43,7 @@ public class BottomSheetListBehavior extends BottomSheetBehavior {
     }
 
     private boolean leaveEventToNestingChild(View target) {
-        return (isAnchorTouched() || isChildOnTop((ViewGroup) target));
+        return !(isAnchorTouched() || isChildOnTop((ViewGroup) target));
     }
 
     @Override
