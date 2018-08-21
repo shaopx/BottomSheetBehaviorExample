@@ -14,8 +14,7 @@ androidx (完全可以替换成support库)
 java    
 
 #### 实现说明
-自定义了一个Behavior, 继承自BottomSheetBehavior   
-
+都在xml布局文件中:
 ```
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -34,56 +33,38 @@ java
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"
             android:text="评论列表" />
-
-
+        
     </RelativeLayout>
 
-    <androidx.core.widget.NestedScrollView
+
+    <LinearLayout
         android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="348dp"
+        android:orientation="vertical"
         app:behavior_hideable="true"
         app:behavior_peekHeight="0dp"
-        app:layout_behavior="com.spx.bottomsheetbehaviorexample.BottomSheetListBehavior">
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/list_title_tv"
             android:layout_width="match_parent"
-            android:layout_height="348dp"
-            android:orientation="vertical">
+            android:layout_height="48dp"
+            android:background="#3300ff00"
+            android:gravity="center"
+            android:text="这个是标题,可以拖住滑动" />
 
-            <TextView
-                android:id="@+id/list_title_tv"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="#3300ff00"
-                android:gravity="center"
-                android:text="这个是标题,可以拖住滑动" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="300dp">
+        </androidx.recyclerview.widget.RecyclerView>
 
-            </androidx.recyclerview.widget.RecyclerView>
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 ```
 
-Activity使用代码:
-```
-........
-        setContentView(R.layout.activity_main);
-
-        final NestedScrollView nestedScrollView = findViewById(R.id.bottom_sheet);
-        ViewGroup.LayoutParams layoutParams = nestedScrollView.getLayoutParams();
-        CoordinatorLayout.Behavior b = ((CoordinatorLayout.LayoutParams) layoutParams)
-                .getBehavior();
-        behavior = (BottomSheetListBehavior) b;
-        behavior.setAnchorView(findViewById(R.id.list_title_tv));  // 如果不需要可拖动的标题效果, 可以选择不设置
-        behavior.setRecyclerView((RecyclerView) findViewById(R.id.recyclerView)); // 可以选择不设置
-        ...........
-```
 
 
