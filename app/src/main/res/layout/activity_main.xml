@@ -16,37 +16,32 @@
             android:layout_marginTop="40dp"
             android:text="评论列表" />
 
-
     </RelativeLayout>
 
-    <androidx.core.widget.NestedScrollView
+
+    <LinearLayout
         android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="348dp"
+        android:orientation="vertical"
         app:behavior_hideable="true"
         app:behavior_peekHeight="0dp"
-        app:layout_behavior="com.spx.bottomsheetbehaviorexample.BottomSheetListBehavior">
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/list_title_tv"
             android:layout_width="match_parent"
-            android:layout_height="348dp"
-            android:orientation="vertical">
+            android:layout_height="48dp"
+            android:background="#3300ff00"
+            android:gravity="center"
+            android:text="这个是标题,可以拖住滑动" />
 
-            <TextView
-                android:id="@+id/list_title_tv"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="#3300ff00"
-                android:gravity="center"
-                android:text="这个是标题,可以拖住滑动" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="300dp">
+        </androidx.recyclerview.widget.RecyclerView>
 
-            </androidx.recyclerview.widget.RecyclerView>
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

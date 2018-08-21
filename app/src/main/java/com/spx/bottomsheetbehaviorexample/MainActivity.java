@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    BottomSheetListBehavior behavior;
+    BottomSheetBehavior behavior;
 
     List<String> data = new ArrayList<>();
 
@@ -28,13 +28,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final NestedScrollView nestedScrollView = findViewById(R.id.bottom_sheet);
+        final View nestedScrollView = findViewById(R.id.bottom_sheet);
         ViewGroup.LayoutParams layoutParams = nestedScrollView.getLayoutParams();
         CoordinatorLayout.Behavior b = ((CoordinatorLayout.LayoutParams) layoutParams)
                 .getBehavior();
-        behavior = (BottomSheetListBehavior) b;
-        behavior.setAnchorView(findViewById(R.id.list_title_tv));
-        behavior.setRecyclerView((RecyclerView) findViewById(R.id.recyclerView));
+        behavior = (BottomSheetBehavior) b;
 
         findViewById(R.id.startBtn).setOnClickListener(new View.OnClickListener() {
             @Override

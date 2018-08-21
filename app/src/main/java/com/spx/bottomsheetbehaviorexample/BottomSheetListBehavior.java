@@ -15,7 +15,9 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
+/**
+ * @deprecated   useless
+ */
 public class BottomSheetListBehavior extends BottomSheetBehavior {
     private static final String TAG = "BottomSheetListBehavior";
 
@@ -35,6 +37,8 @@ public class BottomSheetListBehavior extends BottomSheetBehavior {
 
     @Override
     public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dx, int dy, int[] consumed, int type) {
+
+        // 如果是向下滑动, 并且当前状态需要把滑动完全交给recyclerview, 那么直接返回
         if (dy < 0 && leaveEventToNestingChild(target)) {
             Log.d(TAG, "let child have event!");
             return;
