@@ -18,7 +18,7 @@
 
     </RelativeLayout>
 
-
+      <!--如果你用的不是androidx版本, 那么app:layout_behavior中设置的值就对应的要更换为design库中的类名-->
     <LinearLayout
         android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
